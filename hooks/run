@@ -1,4 +1,13 @@
-#!/bin/sh -xe
-exec 2>&1
-cd 
-#gunicorn -c gunicorn.conf.py --bind 0.0.0.0:8080 azure-voting-app-redis
+#!/bin/sh
+export HOME=/hab/svc/azure-voting-app-redis/data
+cd /hab/svc
+
+if [ "$(whoami)" = "root" ]; then
+  exec chpst \
+    -U hab:hab \
+    -u hab:hab \
+    azure-voting-app-redis -o 0.0.0.0 --config /hab/svc/azure-voting-app-redis/config/config.yml 2>&1
+else
+  exec azure-voting-app-redis -o 0.0.0.0 --config /hab/svc/azure-voting-app-redis/config/config.yml 2>&1
+fi
+

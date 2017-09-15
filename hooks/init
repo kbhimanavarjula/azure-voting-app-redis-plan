@@ -1,6 +1,0 @@
-#!/bin/sh -xe
-exec 2>&1
-ln -fs /app 
-ln -fs /venv 
-ln -fs /config_file.cfg 
-ln -fs /main.py

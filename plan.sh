@@ -30,7 +30,7 @@ pkg_exports=(8080)
 #   [storage]="port host"
 # )
 # pkg_interpreters=(bin/bash)
-pkg_svc_user="hab"
+pkg_svc_user="root"
 pkg_svc_group="$pkg_svc_user"
 # pkg_description="Some description."
 # pkg_upstream_url="http://example.com/project-name"
